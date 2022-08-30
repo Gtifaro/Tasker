@@ -1,11 +1,14 @@
 import React from 'react';
+import "../styles/TodoList.css";
 
 function TodoList(props) {
     return (
         <React.Fragment>
-            <ul>
-                {props.children}
-            </ul>
+            <div className='todolist'>
+                <ul>
+                    {props.children}
+                </ul>
+            </div>
         </React.Fragment>
     );
 }

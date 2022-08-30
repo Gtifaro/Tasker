@@ -1,0 +1,11 @@
+.search{
+    margin: auto;
+    box-sizing: border-box;
+    width: 66%;
+    height: 7%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+}

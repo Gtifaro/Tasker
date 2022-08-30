@@ -4,6 +4,7 @@ import {TodoSearch} from "./components/TodoSearch";
 import {TodoList} from "./components/TodoList";
 import {TodoItem} from "./components/TodoItem";
 import {AddTodo} from "./components/AddTodo";
+import "./styles/App.css";
 
 function App() {
 
@@ -14,14 +15,18 @@ function App() {
 
   return (
     <React.Fragment>
-      <TodoCounter todos={Todos} />
-      <TodoSearch/>
-      <TodoList>
-        {Todos.map(todos => (
-          <TodoItem key={todos.text} text={todos.text} finished={todos.finished}/>
-        ))}
-      </TodoList>
-      <AddTodo/>
+      <div className="container">
+        <div className="content">
+          <TodoCounter todos={Todos} />
+          <TodoSearch/>
+          <TodoList>
+            {Todos.map(todos => (
+              <TodoItem key={todos.text} text={todos.text} finished={todos.finished}/>
+            ))}
+          </TodoList>
+          <AddTodo/>
+        </div>
+      </div>
     </React.Fragment>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import "../styles/TodoCounter.css";
 
 function TodoCounter(props) {
     let x = 0;
@@ -7,10 +8,9 @@ function TodoCounter(props) {
         t.finished ? x++ : console.log(),
         y++
     ));
-    let finish = x;
     return (
         <React.Fragment>
-            <h1>Has completado {finish} de {y} Todos.</h1>
+            <h1 className='completed'>Has completado {x} de {y} Todos.</h1>
         </React.Fragment>
     );
 }

@@ -1,9 +1,10 @@
 import React from 'react';
+import "../styles/TodoSearch.css";
 
 function TodoSearch(props) {
     return (
         <React.Fragment>
-            <input placeholder='Hoy voy a ...'/>
+            <input className='search' placeholder='Hoy voy a ...'/>
         </React.Fragment>
     );
 }
