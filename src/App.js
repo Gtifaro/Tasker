@@ -10,7 +10,12 @@ function App() {
 
   var Todos = [
     {text: "Comer", finished: false},
-    {text: "Dormir", finished: false}
+    {text: "Comer", finished: false},
+    {text: "Comer", finished: false},
+    {text: "Comer", finished: false},
+    {text: "Comer", finished: false},
+    {text: "Comer", finished: false},
+    {text: "Comer", finished: false}
   ]
 
   return (

@@ -6,4 +6,15 @@
     width: 75%;
     height: 70%;
     border-radius: 10px;
+    overflow-y: auto;
+    
+}
+.todolist::-webkit-scrollbar{
+    display: none;
+}
+.list{
+    margin: 0;
+    padding: 0;
+    display: block;
+    box-sizing: border-box;
 }

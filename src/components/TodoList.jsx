@@ -5,7 +5,7 @@ function TodoList(props) {
     return (
         <React.Fragment>
             <div className='todolist'>
-                <ul>
+                <ul className='list'>
                     {props.children}
                 </ul>
             </div>

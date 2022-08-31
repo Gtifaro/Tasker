@@ -1,12 +1,13 @@
 import React from 'react';
+import "../styles/TodoItem.css";
 
 function TodoItem(props) {
     return (
         <React.Fragment>
-            <li>
-                <span>Ready</span>
-                <p>{props.text}</p>
-                <span>X</span>
+            <li className={`task ${props.finished && 'checked'}`}>
+                <span className={`ready`}>✔</span>
+                <p className='text'>{props.text}</p>
+                <span className='delete'>🞮</span>
             </li>
         </React.Fragment>
     );
