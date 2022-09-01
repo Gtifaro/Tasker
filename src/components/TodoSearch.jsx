@@ -4,7 +4,12 @@ import "../styles/TodoSearch.css";
 function TodoSearch(props) {
     return (
         <React.Fragment>
-            <input className='search' placeholder='Hoy voy a ...'/>
+            <input 
+                className='search' 
+                value={props.search} 
+                placeholder='Hoy voy a ...'
+                onChange={(e) => props.setSearch(e.target.value)}
+            />
         </React.Fragment>
     );
 }
