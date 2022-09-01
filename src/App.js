@@ -9,14 +9,13 @@ import "./styles/App.css";
 function App() {
 
   const [search, setSearch] = useState('');
-  const [todos, setTodos] = useState(Todo);
+  
   var Todo = [
-    {text: "Comer", finished: false},
-    {text: "dormir", finished: false},
-    {text: "beber", finished: false},
-    {text: "trabajar", finished: false}
+    {text: "Comer", finished: false}
   ]
+  const [todos, setTodos] = useState(Todo);
 
+  
   function searchTodos(todos){
     let todo = todos.text.toLowerCase();
     let searched = search.toLowerCase();
@@ -27,16 +26,16 @@ function App() {
     <React.Fragment>
       <div className="container">
         <div className="content">
-          <TodoCounter todos={Todo} />
+          <TodoCounter todos={todos} />
           <TodoSearch
             search={search}
             setSearch={setSearch}
           />
           <TodoList>
-            {search === '' ? Todo.map(todos => (
+            {search === '' ? todos.map(todos => (
               <TodoItem key={todos.text} text={todos.text} finished={todos.finished}/>
             )) :
-            Todo.filter((todo) => searchTodos(todo)).map(todos => (
+            todos.filter((todo) => searchTodos(todo)).map(todos => (
               <TodoItem key={todos.text} text={todos.text} finished={todos.finished}/>
             ))}
           </TodoList>
