@@ -1,36 +1,35 @@
 import React, { useState } from "react";
 import { AppUi } from "./AppUi";
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import "./App.css";
 
+// function useLocalStorage(storageItem, initialValue){
+//   const LS = localStorage.getItem(storageItem);
+//   let storageItems;
+
+//   if(!LS){
+//     let createLS = JSON.stringify(initialValue);
+//     localStorage.setItem(storageItem, createLS);
+//     storageItems = JSON.parse(localStorage.getItem(storageItem));
+//   }else{
+//     storageItems = JSON.parse(LS);
+//   }
+//   const [items, setItems] = useState(storageItems);
+
+//   const saveTodos = (newTodos) => (
+//     console.log(newTodos),
+//     setItems(newTodos),
+//     localStorage.setItem(storageItem, JSON.stringify(newTodos))
+//   );
+//   return [
+//     items,
+//     saveTodos
+//   ]
+// }
+
 function App() {
-
   const [search, setSearch] = useState('');
-  
-  var Todo = [
-    {text: "Comer", finished: false},
-    {text: "Dormir", finished: false}
-  ]
-
-  const LS = localStorage.getItem('Todos_V1');
-  let storageTodos;
-
-  if(!LS){
-    let createLS = JSON.stringify([
-      {text: "Comer", finished: false},
-      {text: "Dormir", finished: false}
-    ]);
-    localStorage.setItem('Todos_V1', createLS);
-    storageTodos = JSON.parse(localStorage.getItem('Todos_V1'));
-  }else{
-    storageTodos = JSON.parse(LS);
-  }
-
-  const [todos, setTodos] = useState(storageTodos);
-
-  const saveTodos = (newTodos) => (
-    setTodos(newTodos),
-    localStorage.setItem('Todos_V1', JSON.stringify(newTodos))
-  );
+  const [todos, saveTodos] = useLocalStorage('Todos_V1', [{text: "Comer", finished: false}]);
 
   const onComplete = (text) => {
     let index = todos.findIndex(t => t.text===text);
