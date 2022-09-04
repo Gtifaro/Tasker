@@ -18,6 +18,9 @@ function App() {
 
   const onComplete = (text) => {
     let index = todos.findIndex(t => t.text===text);
+    let newTodos = [...todos];
+    newTodos[index].finished = true;
+    setTodos(newTodos);
     console.log(index);
   };
   const onDelete = (text) => {
