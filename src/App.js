@@ -21,11 +21,12 @@ function App() {
     let newTodos = [...todos];
     newTodos[index].finished = true;
     setTodos(newTodos);
-    console.log(index);
   };
   const onDelete = (text) => {
     let index = todos.findIndex(t => t.text===text);
-    console.log(index);
+    let newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
   };
   function searchTodos(todos){
     let todo = todos.text.toLowerCase();
