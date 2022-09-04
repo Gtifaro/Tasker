@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/AddTodo.css";
+import "./AddTodo.css";
 
 function AddTodo(props) {
     return (
