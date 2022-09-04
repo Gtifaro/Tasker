@@ -5,9 +5,15 @@ function TodoItem(props) {
     return (
         <React.Fragment>
             <li className={`task ${props.finished && 'checked'}`}>
-                <span className={`ready`}>✔</span>
+                <span 
+                    className={`ready`}
+                    onClick={props.onComplete}
+                >✔</span>
                 <p className='text'>{props.text}</p>
-                <span className='delete'>🞮</span>
+                <span 
+                    className='delete'
+                    onClick={props.onDelete}
+                >🞮</span>
             </li>
         </React.Fragment>
     );
