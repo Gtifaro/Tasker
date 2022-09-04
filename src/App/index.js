@@ -10,19 +10,39 @@ function App() {
     {text: "Comer", finished: false},
     {text: "Dormir", finished: false}
   ]
-  const [todos, setTodos] = useState(Todo);
+
+  const LS = localStorage.getItem('Todos_V1');
+  let storageTodos;
+
+  if(!LS){
+    let createLS = JSON.stringify([
+      {text: "Comer", finished: false},
+      {text: "Dormir", finished: false}
+    ]);
+    localStorage.setItem('Todos_V1', createLS);
+    storageTodos = JSON.parse(localStorage.getItem('Todos_V1'));
+  }else{
+    storageTodos = JSON.parse(LS);
+  }
+
+  const [todos, setTodos] = useState(storageTodos);
+
+  const saveTodos = (newTodos) => (
+    setTodos(newTodos),
+    localStorage.setItem('Todos_V1', JSON.stringify(newTodos))
+  );
 
   const onComplete = (text) => {
     let index = todos.findIndex(t => t.text===text);
     let newTodos = [...todos];
     newTodos[index].finished = true;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
   const onDelete = (text) => {
     let index = todos.findIndex(t => t.text===text);
     let newTodos = [...todos];
     newTodos.splice(index, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
   function searchTodos(todos){
     let todo = todos.text.toLowerCase();

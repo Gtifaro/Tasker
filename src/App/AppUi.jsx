@@ -11,7 +11,7 @@ function AppUi({
         todos={todos},
         onComplete={onComplete},
         onDelete={onDelete},
-        searchTodos={searchTodos},
+        searchTodos={searchTodos}
     }){
     return (
         <React.Fragment>
