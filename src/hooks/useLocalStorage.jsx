@@ -12,7 +12,7 @@ function useLocalStorage(storageItem, initialValue){
       storageItems = JSON.parse(LS);
     }
     const [items, setItems] = useState(storageItems);
-  
+
     const saveTodos = (newTodos) => (
       console.log(newTodos),
       setItems(newTodos),
