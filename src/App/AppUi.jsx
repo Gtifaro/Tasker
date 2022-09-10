@@ -6,12 +6,14 @@ import {TodoItem} from "../TodoItem";
 import {AddTodo} from "../AddTodo";
 
 function AppUi({
-        search={search},
-        setSearch={setSearch},
-        todos={todos},
-        onComplete={onComplete},
-        onDelete={onDelete},
-        searchTodos={searchTodos}
+        error,
+        loading,
+        search,
+        setSearch,
+        todos,
+        onComplete,
+        onDelete,
+        searchTodos
     }){
     return (
         <React.Fragment>
@@ -23,24 +25,29 @@ function AppUi({
                     setSearch={setSearch}
                 />
                 <TodoList>
+                    {loading && <p>Cargando...</p>}
+                    {console.log()}
+                    {(!loading && todos.length === 0) && <p>¡Crea tú primer TODO!</p>}
+                    {error && <p>Ha ocurrido un error :/</p>}
                     {search === '' ? todos.map(todos => (
-                    <TodoItem 
-                        key={todos.text} 
-                        text={todos.text} 
-                        finished={todos.finished}
-                        onComplete={() => onComplete(todos.text)}
-                        onDelete={() => onDelete(todos.text)}
-                    />
-                    )) :
-                    todos.filter((todo) => searchTodos(todo)).map(todos => (
-                    <TodoItem 
-                        key={todos.text} 
-                        text={todos.text} 
-                        finished={todos.finished}
-                        onComplete={() => onComplete(todos.text)}
-                        onDelete={() => onDelete(todos.text)}
-                    />
-                    ))}
+                        <TodoItem 
+                            key={todos.text} 
+                            text={todos.text} 
+                            finished={todos.finished}
+                            onComplete={() => onComplete(todos.text)}
+                            onDelete={() => onDelete(todos.text)}
+                        />
+                        )) :
+                        todos.filter((todo) => searchTodos(todo)).map(todos => (
+                        <TodoItem 
+                            key={todos.text} 
+                            text={todos.text} 
+                            finished={todos.finished}
+                            onComplete={() => onComplete(todos.text)}
+                            onDelete={() => onDelete(todos.text)}
+                        />
+                        ))
+                    }
                 </TodoList>
                 <AddTodo/>
                 </div>
