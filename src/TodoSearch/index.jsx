@@ -1,14 +1,19 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import "./TodoSearch.css";
+import { TodoContext } from '../TodoContext';
 
-function TodoSearch(props) {
+function TodoSearch() {
+    const {
+        search,
+        setSearch
+    } = useContext(TodoContext);
     return (
         <React.Fragment>
             <input 
-                className='search' 
-                value={props.search} 
-                placeholder='Hoy voy a ...'
-                onChange={(e) => props.setSearch(e.target.value)}
+                className='search'
+                value={search} 
+                placeholder='Hoy voy a... 🤔'
+                onChange={a => setSearch(a.target.value)}
             />
         </React.Fragment>
     );
