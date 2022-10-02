@@ -20,6 +20,17 @@ function TodoProvider(props) {
         newTodos[index].finished = true;
         saveTodos(newTodos);
     };
+
+    const onAddTodo = (newTodoText) => {
+        let text = newTodoText;
+        let newTodos = [...todos];
+        newTodos.push({
+            finished: false,
+            text: text
+        });
+        saveTodos(newTodos);
+    }
+
     const onDelete = (text) => {
         let index = todos.findIndex(t => t.text===text);
         let newTodos = [...todos];
@@ -43,7 +54,8 @@ function TodoProvider(props) {
             onDelete,
             searchTodos,
             showModal,
-            setShowModal
+            setShowModal,
+            onAddTodo
         }}>
             {props.children}
         </TodoContext.Provider>

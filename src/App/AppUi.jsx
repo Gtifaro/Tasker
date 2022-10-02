@@ -18,7 +18,6 @@ function AppUi(){
         search,
         searchTodos,
         showModal,
-        setShowModal
     } = useContext(TodoContext);
     return (
         <React.Fragment>
@@ -58,14 +57,7 @@ function AppUi(){
                 </div>
             </div>
             {!!showModal &&
-                <Modal>
-                    <input type="text"/>
-                    <button onClick={() => setShowModal(false)}>Cancelar</button>
-                    <button onClick={() => {
-                        setShowModal(false);
-                        //TODO code the push to the array and save it on the locaStorage
-                    }}>Agregar</button>
-                </Modal>
+                <Modal/>
             }
         </React.Fragment>
     );
