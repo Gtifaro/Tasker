@@ -12,6 +12,8 @@ function TodoProvider(props) {
         error
     } = useLocalStorage('Todos_V1', []);
 
+    const [showModal, setShowModal] = useState(false);
+
     const onComplete = (text) => {
         let index = todos.findIndex(t => t.text===text);
         let newTodos = [...todos];
@@ -40,6 +42,8 @@ function TodoProvider(props) {
             onComplete,
             onDelete,
             searchTodos,
+            showModal,
+            setShowModal
         }}>
             {props.children}
         </TodoContext.Provider>

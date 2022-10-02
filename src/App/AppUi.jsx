@@ -6,6 +6,7 @@ import {TodoItem} from "../TodoItem";
 import {AddTodo} from "../AddTodo";
 import { TodoContext } from '../TodoContext';
 import { useContext } from 'react';
+import { Modal } from "../Modal";
 
 function AppUi(){
     const {
@@ -15,7 +16,9 @@ function AppUi(){
         onComplete,
         onDelete,
         search,
-        searchTodos
+        searchTodos,
+        showModal,
+        setShowModal
     } = useContext(TodoContext);
     return (
         <React.Fragment>
@@ -25,7 +28,6 @@ function AppUi(){
                 <TodoSearch/>
                 <TodoList>
                     {loading && <p>Cargando... 🐾</p>}
-                    {console.log()}
                     {(!loading && todos.length === 0 && search === '') && <p>¡Crea tú primer TODO! 🌟</p>}
                     {(!loading && todos.length === 0 && search !== '') && <p>Nada por aquí 🦗</p>}
                     {error && <p>Ha ocurrido un error :/</p>}
@@ -55,6 +57,16 @@ function AppUi(){
                 <AddTodo/>
                 </div>
             </div>
+            {!!showModal &&
+                <Modal>
+                    <input type="text"/>
+                    <button onClick={() => setShowModal(false)}>Cancelar</button>
+                    <button onClick={() => {
+                        setShowModal(false);
+                        //TODO code the push to the array and save it on the locaStorage
+                    }}>Agregar</button>
+                </Modal>
+            }
         </React.Fragment>
     );
 }
